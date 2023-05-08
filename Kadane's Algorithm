@@ -1,0 +1,48 @@
+long long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        /*
+        
+        First Approach - 
+        
+        I will try to find all subarrays and then then find the sum of the elements within it 
+        and find the maximum sum from all of the subarrays.
+        
+        Time complexity - O(n^3) 
+        Space complexity - O(1)
+        
+        
+        Second approach - 
+        
+        Here, we will optimize this by storing sum along with the process of finding different 
+        subarrays and then find the maximum sum from all of the subarrays.
+        
+        Time complexity - O(n^2)
+        Space complexity - O(1)
+        
+        
+        Third approach - 
+        
+        Here, we will use Kadane's Algorithm to find the maximum sum subarray.
+        How?
+        What we will do is we will traverse along the array and then maintain a curr_sum and 
+        max_sum variable which i will modify accordingly.
+        curr_sum will store the curr_sum we have till this point and then let's say if we get 
+        negative curr_sum then we will update it to 0 as there is no point to carry negative
+        sum forward, it's only going to decrease our overall sum.
+        And, when we will get a sum which is greater than our max_sum we will update our
+        max_sum variable.
+        
+        */
+        
+        long long int curr_sum=0;
+        long long int max_sum=INT_MIN;
+        for(int i=0;i<n;i++){
+            curr_sum+=(arr[i]);
+            max_sum=max(curr_sum,max_sum);
+            if(curr_sum<0){
+                curr_sum=0;
+            }
+        }
+        return max_sum;
+    }
